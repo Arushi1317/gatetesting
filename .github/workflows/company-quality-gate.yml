@@ -43,7 +43,7 @@ on:
 
 jobs:
   quality-gate:
-    runs-on: [self-hosted, windows, x64]
+    runs-on: windows-latest
     outputs:
       gate_decision: ${{ steps.extract.outputs.gate_decision }}
       report_quality: ${{ steps.extract.outputs.report_quality }}
@@ -59,6 +59,12 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
+
+      - name: Install required tools
+        shell: pwsh
+        run: |
+          choco install pandoc wkhtmltopdf -y --no-progress
+          refreshenv
 
       - name: Verify required tools
         shell: pwsh
