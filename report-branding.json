@@ -1,0 +1,8 @@
+{
+  "companyName": "Company",
+  "logoPath": "tools/reporting/assets/company-logo.png",
+  "primaryColor": "#1F4E79",
+  "secondaryColor": "#2E75B6",
+  "fontFamily": "Segoe UI",
+  "footerText": "Confidential - Internal Use Only"
+}

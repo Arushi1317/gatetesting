@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$if(title)$$title$$else$Report$endif$</title>
+  $for(css)$
+  <link rel="stylesheet" href="$css$" />
+  $endfor$
+</head>
+<body>
+  <header class="report-header">
+    <div class="header-brand">
+      <img src="__LOGO_URL__" alt="Company Logo" class="header-logo" />
+      <div class="header-title">$if(title)$$title$$else$Report$endif$</div>
+    </div>
+    <div class="header-meta">
+      <span>Generated: $if(run_timestamp)$$run_timestamp$$else$N/A$endif$</span>
+    </div>
+  </header>
+
+  <main class="report-content">
+$body$
+  </main>
+</body>
+</html>

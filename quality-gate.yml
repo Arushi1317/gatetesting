@@ -1,0 +1,45 @@
+name: quality-gate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality-gate:
+    runs-on: [self-hosted, windows, x64]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Verify required tools
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          dotnet --version
+          if (-not (Get-Command pandoc -ErrorAction SilentlyContinue)) { throw "pandoc not found on self-hosted runner" }
+          if (-not (Get-Command wkhtmltopdf -ErrorAction SilentlyContinue)) { throw "wkhtmltopdf not found on self-hosted runner" }
+
+      - name: Run quality gate report generation
+        shell: pwsh
+        continue-on-error: true
+        run: |
+          ./scripts/run_quality_gate.ps1 -Configuration Release
+
+      - name: Convert markdown reports to branded PDFs
+        shell: pwsh
+        run: |
+          ./scripts/render_reports_to_pdf.ps1 -ArtifactsRoot artifacts -BrandingConfig config/report-branding.json
+
+      - name: Upload markdown and PDF artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-gate-artifacts
+          path: artifacts/**
+          if-no-files-found: warn

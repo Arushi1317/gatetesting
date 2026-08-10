@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "coverage": {
+    "lines_total": 411,
+    "lines_covered": 0,
+    "line_coverage_percent": 0.0
+  },
+  "sarif": {
+    "total_findings": 1,
+    "by_level": {
+      "error": 0,
+      "warning": 1,
+      "note": 0
+    }
+  },
+  "counts": {
+    "BLOCK_ELIGIBLE": 0,
+    "WARN_ONLY": 0,
+    "INFO_ONLY": 1,
+    "IGNORE": 0
+  },
+  "reasons": [
+    "No block-eligible issues found."
+  ],
+  "decisions": [
+    {
+      "rule": "CA1822",
+      "severity": "warning",
+      "file": "src/Calculator/Calculator.cs",
+      "line": 12,
+      "coverage": "unknown",
+      "file_type": "business",
+      "is_new": true,
+      "gate_class": "INFO_ONLY",
+      "rule_triggered": "G-DEFAULT",
+      "reasoning": "CA1822: default rule",
+      "message": "Member can be static."
+    }
+  ]
+}

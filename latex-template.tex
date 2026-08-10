@@ -1,0 +1,53 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=20mm,left=15mm,right=15mm,top=20mm,bottom=20mm]{geometry}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{fvextra}
+\usepackage{hyperref}
+
+\setmainfont{$if(mainfont)$$mainfont$$else$Segoe UI$endif$}
+\definecolor{PrimaryColor}{HTML}{$if(primarycolorhex)$$primarycolorhex$$else$1F4E79$endif$}
+\definecolor{SecondaryColor}{HTML}{$if(secondarycolorhex)$$secondarycolorhex$$else$2E75B6$endif$}
+\definecolor{CodeBg}{HTML}{F5F5F5}
+\definecolor{TableHeadBg}{HTML}{F3F4F6}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[height=0.8cm]{$if(logo_path)$$logo_path$$endif$}}
+\chead{\textcolor{PrimaryColor}{\textbf{$if(title)$$title$$else$Report$endif$}}}
+\rhead{\footnotesize $if(run_timestamp)$$run_timestamp$$else$N/A$endif$}
+\lfoot{\footnotesize $if(title)$$title$$else$Report$endif$}
+\cfoot{\footnotesize $if(footer_text)$$footer_text$$else$Confidential - Internal Use Only$endif$}
+\rfoot{\footnotesize Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\titleformat{\section}{\Large\bfseries\color{PrimaryColor}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{18pt}{10pt}
+\titleformat{\subsection}{\large\bfseries\color{SecondaryColor}}{}{0pt}{}
+
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\},fontsize=\small,formatcom=\color{black}}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=PrimaryColor,
+  urlcolor=SecondaryColor
+}
+
+\begin{document}
+$if(title)$
+\begin{center}
+  {\Large\textbf{\textcolor{PrimaryColor}{$title$}}}\\
+\end{center}
+\vspace{3mm}
+$endif$
+
+$body$
+\end{document}

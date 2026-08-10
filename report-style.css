@@ -1,0 +1,118 @@
+:root {
+  --primary-color: __PRIMARY_COLOR__;
+  --secondary-color: __SECONDARY_COLOR__;
+  --font-family: "__FONT_FAMILY__", "Segoe UI", Arial, sans-serif;
+  --text-color: #1f2937;
+  --table-header-bg: #f3f4f6;
+  --code-bg: #f5f5f5;
+}
+
+@page {
+  size: A4;
+  margin: 20mm 15mm 20mm 15mm;
+}
+
+html,
+body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  font-size: 11pt;
+  line-height: 1.45;
+}
+
+body {
+  margin: 0;
+}
+
+.report-header {
+  position: fixed;
+  top: -10mm;
+  left: 0;
+  right: 0;
+  height: 18mm;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 3mm;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-logo {
+  max-height: 10mm;
+  max-width: 45mm;
+  object-fit: contain;
+}
+
+.header-title {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 13pt;
+  text-align: right;
+}
+
+.header-meta {
+  margin-top: 1mm;
+  text-align: right;
+  color: #4b5563;
+  font-size: 9pt;
+}
+
+.report-content {
+  margin-top: 22mm;
+}
+
+h1 {
+  page-break-before: auto;
+  margin-top: 20pt;
+  margin-bottom: 10pt;
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--secondary-color);
+  padding-bottom: 4pt;
+}
+
+h2, h3, h4 {
+  color: #1f3b6d;
+  margin-top: 16pt;
+  margin-bottom: 8pt;
+}
+
+p, li {
+  orphans: 3;
+  widows: 3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8pt 0 14pt 0;
+  page-break-inside: avoid;
+}
+
+th,
+td {
+  border: 1px solid #6b7280;
+  padding: 6pt;
+  vertical-align: top;
+}
+
+th {
+  background: var(--table-header-bg);
+  font-weight: 700;
+}
+
+pre,
+code {
+  font-family: "Cascadia Code", Consolas, "Courier New", monospace;
+}
+
+pre {
+  background: var(--code-bg);
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 8pt;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}

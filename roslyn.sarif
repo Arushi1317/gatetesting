@@ -1,0 +1,23 @@
+{
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": { "driver": { "name": "Roslyn" } },
+      "results": [
+        {
+          "ruleId": "CA1822",
+          "level": "warning",
+          "message": { "text": "Member can be static." },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {"uri": "src/RealWorldApi/Services/OrderService.cs" },
+                "region": { "startLine": 12 }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
